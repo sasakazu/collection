@@ -1,0 +1,6 @@
+framework module Pods_collection {
+  umbrella header "Pods-collection-umbrella.h"
+
+  export *
+  module * { export * }
+}
