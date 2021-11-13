@@ -9,6 +9,8 @@ target 'collection' do
   
   # add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
 
   target 'collectionTests' do
     inherit! :search_paths
