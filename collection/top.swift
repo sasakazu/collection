@@ -26,7 +26,7 @@ class top: UITableViewController {
         
         let user = Auth.auth().currentUser
         
-        print(user?.email!)
+        print(user?.email)
         
 //        fasion
         fasionImage.image = UIImage(systemName: "tshirt.fill")
