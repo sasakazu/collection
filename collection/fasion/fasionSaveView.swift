@@ -25,11 +25,16 @@ class fasionSaveView: UIViewController {
         let user = Auth.auth().currentUser
         let db = Firestore.firestore()
 
-        db.collection("users").document(user!.uid).collection("fasion").document().setData([
+        let Ref = db.collection("users").document(user!.uid).collection("fasion")
+            
+            let doc = Ref.document()
+            
+            let somedata = [ "collectionName": collectionname,
+                             "documentID": doc.documentID
+                            ]
 
-            "collectionName": collectionname
-
-        ]) { err in
+        Ref.document(doc.documentID).setData(somedata) { err in
+            
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
