@@ -23,6 +23,8 @@
 		732F8197274102BB00B4BF62 /* fasionCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732F8196274102BB00B4BF62 /* fasionCreateView.swift */; };
 		732F819A27410EF200B4BF62 /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732F819927410EF200B4BF62 /* login.swift */; };
 		732F819C27410F0C00B4BF62 /* signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732F819B27410F0C00B4BF62 /* signup.swift */; };
+		732F819F2743AD8200B4BF62 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732F819E2743AD8200B4BF62 /* model.swift */; };
+		732F81A12743B54800B4BF62 /* fasionSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732F81A02743B54800B4BF62 /* fasionSaveView.swift */; };
 		8277106C9C7B6C33739A4FC2 /* Pods_collection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121CF893565F07D23A45233D /* Pods_collection.framework */; };
 		C79FEB17292C22BF3EED61B8 /* Pods_collectionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43877F63A3AA613AB12EE1D /* Pods_collectionTests.framework */; };
 		EBD7AF4F4E612CF1176A336C /* Pods_collection_collectionUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55091A8A59FB63E02B9CAF1 /* Pods_collection_collectionUITests.framework */; };
@@ -70,6 +72,8 @@
 		732F8196274102BB00B4BF62 /* fasionCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fasionCreateView.swift; sourceTree = "<group>"; };
 		732F819927410EF200B4BF62 /* login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
 		732F819B27410F0C00B4BF62 /* signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signup.swift; sourceTree = "<group>"; };
+		732F819E2743AD8200B4BF62 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		732F81A02743B54800B4BF62 /* fasionSaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fasionSaveView.swift; sourceTree = "<group>"; };
 		B43877F63A3AA613AB12EE1D /* Pods_collectionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collectionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55091A8A59FB63E02B9CAF1 /* Pods_collection_collectionUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collection_collectionUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D7332A8B900C40AD469EEE /* Pods-collection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collection.release.xcconfig"; path = "Target Support Files/Pods-collection/Pods-collection.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 		732F815C273FB67400B4BF62 /* collection */ = {
 			isa = PBXGroup;
 			children = (
+				732F819D2743AD6800B4BF62 /* model */,
 				732F819827410ED400B4BF62 /* login-signup */,
 				732F81932741023300B4BF62 /* fasion */,
 				732F815D273FB67400B4BF62 /* AppDelegate.swift */,
@@ -168,6 +173,7 @@
 			children = (
 				732F81942741027F00B4BF62 /* fasionTop.swift */,
 				732F8196274102BB00B4BF62 /* fasionCreateView.swift */,
+				732F81A02743B54800B4BF62 /* fasionSaveView.swift */,
 			);
 			path = fasion;
 			sourceTree = "<group>";
@@ -179,6 +185,14 @@
 				732F819B27410F0C00B4BF62 /* signup.swift */,
 			);
 			path = "login-signup";
+			sourceTree = "<group>";
+		};
+		732F819D2743AD6800B4BF62 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				732F819E2743AD8200B4BF62 /* model.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		98DDC472A077F621B126D189 /* Pods */ = {
@@ -450,8 +464,10 @@
 				732F8160273FB67400B4BF62 /* SceneDelegate.swift in Sources */,
 				732F81952741027F00B4BF62 /* fasionTop.swift in Sources */,
 				732F8197274102BB00B4BF62 /* fasionCreateView.swift in Sources */,
+				732F81A12743B54800B4BF62 /* fasionSaveView.swift in Sources */,
 				732F819C27410F0C00B4BF62 /* signup.swift in Sources */,
 				732F819A27410EF200B4BF62 /* login.swift in Sources */,
+				732F819F2743AD8200B4BF62 /* model.swift in Sources */,
 				732F8191273FC07400B4BF62 /* top.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

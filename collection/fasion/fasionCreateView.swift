@@ -6,9 +6,15 @@
 //
 
 import UIKit
+import Firebase
 
 class fasionCreateView: UIViewController {
 
+    
+    @IBOutlet weak var collectionNameTF: UITextField!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,4 +22,22 @@ class fasionCreateView: UIViewController {
     }
     
 
+    @IBAction func nextBtn(_ sender: Any) {
+     
+        
+        performSegue(withIdentifier: "nextSegue", sender: nil)
+        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         
+        let next = segue.destination as? fasionSaveView
+        
+        let _ = next?.view
+        
+        next?.collectionname = collectionNameTF.text ?? "no name"
+      }
+    
+    
 }

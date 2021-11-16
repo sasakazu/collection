@@ -28,16 +28,11 @@ class top: UITableViewController {
         
         print(user?.email)
         
-//        fasion
-        fasionImage.image = UIImage(systemName: "tshirt.fill")
-        fasionImage.tintColor = .systemGray
-        //        music
-        musicImage.image = UIImage(systemName: "music.note")
-        musicImage.tintColor = .systemGray
-//        hobby
-        hobbyImage.image = UIImage(systemName: "hare")
-        hobbyImage.tintColor = .systemGray
         
+        self.fasionImage.layer.cornerRadius = self.fasionImage.frame.size.width * 0.5
+        self.fasionImage.clipsToBounds = true
+        self.hobbyImage.layer.cornerRadius = self.hobbyImage.frame.size.width * 0.5
+        self.hobbyImage.clipsToBounds = true
         
         tableview.delegate = self
         tableview.dataSource = self
