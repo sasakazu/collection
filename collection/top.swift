@@ -12,9 +12,14 @@ import SwiftUI
 class top: UITableViewController {
         
     
+    var fasionCount:[String] = []
+    
     @IBOutlet weak var tableview: UITableView!
     
+//    fasion cell
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var fasion: UILabel!
+    
     
     @IBOutlet weak var fasionImage: UIImageView!
     @IBOutlet weak var musicImage: UIImageView!
@@ -28,7 +33,7 @@ class top: UITableViewController {
         
         print(user?.email)
         
-        
+//        画像を角丸にする
         self.fasionImage.layer.cornerRadius = self.fasionImage.frame.size.width * 0.5
         self.fasionImage.clipsToBounds = true
         self.hobbyImage.layer.cornerRadius = self.hobbyImage.frame.size.width * 0.5
@@ -36,6 +41,26 @@ class top: UITableViewController {
         
         tableview.delegate = self
         tableview.dataSource = self
+        
+//        ファッションの個数を取得
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users").document(user!.uid).collection("fasion").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    
+                    self.fasionCount = querySnapshot!.documents.compactMap { $0.data()["collectionName"] as? String }
+                    
+                    self.fasion.text = self.fasionCount.count.description
+                    
+                }
+            }
+        }
+        
+        
 
     }
 

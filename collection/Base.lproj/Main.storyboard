@@ -184,6 +184,7 @@
                         <barButtonItem key="leftBarButtonItem" title="設定" id="C8Z-fI-uPI"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="fasion" destination="P6c-Tr-Xuw" id="ZHc-20-38F"/>
                         <outlet property="fasionImage" destination="WVh-br-AaT" id="K6k-8h-O0z"/>
                         <outlet property="hobbyImage" destination="rR4-A3-bea" id="YdQ-Yr-ecr"/>
                         <outlet property="label" destination="w5X-vU-SKg" id="av6-Y6-6kK"/>
@@ -208,7 +209,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aId-gL-gWZ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="aId-gL-gWZ">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aId-gL-gWZ" id="qmP-fC-XrO">
@@ -217,6 +218,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BWZ-Tc-FvG" id="TIf-I2-6aI"/>
+                                    <outlet property="delegate" destination="BWZ-Tc-FvG" id="sMv-84-rwY"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ws3-4m-gzm"/>
@@ -230,6 +235,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="fasionTable" destination="cxQ-mr-0l2" id="hdl-xZ-7o0"/>
                         <segue destination="zoI-4N-eb1" kind="show" id="DoH-xA-Qyg"/>
                     </connections>
                 </viewController>
