@@ -146,7 +146,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="趣味" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzC-ga-oXl">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="その他" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzC-ga-oXl">
                                                     <rect key="frame" x="68" y="29" width="198" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="5xg-rF-CVq"/>
@@ -181,7 +181,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="collection" id="QOc-xs-mfs">
-                        <barButtonItem key="leftBarButtonItem" title="設定" id="C8Z-fI-uPI"/>
+                        <barButtonItem key="leftBarButtonItem" title="設定" id="C8Z-fI-uPI">
+                            <connections>
+                                <segue destination="c6T-AJ-Jtc" kind="show" id="1MG-cp-wdB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="fasion" destination="P6c-Tr-Xuw" id="ZHc-20-38F"/>
@@ -189,6 +193,7 @@
                         <outlet property="hobbyImage" destination="rR4-A3-bea" id="YdQ-Yr-ecr"/>
                         <outlet property="label" destination="w5X-vU-SKg" id="av6-Y6-6kK"/>
                         <outlet property="musicImage" destination="NAj-Wu-PpB" id="L6q-rh-fqf"/>
+                        <outlet property="settingBtn" destination="C8Z-fI-uPI" id="OOk-kT-B1S"/>
                         <outlet property="tableview" destination="yrZ-vY-tom" id="QAa-ba-17Q"/>
                     </connections>
                 </tableViewController>
@@ -414,10 +419,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="xqO-RB-Fo3">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="camera" id="gj8-ib-dAI"/>
-                            <barButtonItem systemItem="bookmarks" id="OjK-tf-Rjc"/>
+                            <barButtonItem systemItem="camera" id="gj8-ib-dAI">
+                                <connections>
+                                    <action selector="cameraBtn:" destination="ccw-ua-KSK" id="rTd-0F-M8s"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="bookmarks" id="OjK-tf-Rjc">
+                                <connections>
+                                    <action selector="libraryBtn:" destination="ccw-ua-KSK" id="hv3-tZ-LSy"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageOne" destination="Pqe-zS-BSC" id="49e-dz-OyK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xSc-id-zF7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -588,6 +604,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IgV-Ef-tfw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1721.7391304347827" y="83.705357142857139"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="uH0-IN-ehi">
+            <objects>
+                <viewController id="c6T-AJ-Jtc" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ugb-bA-dhA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YN1-rr-k8x">
+                                <rect key="frame" x="139" y="128" width="137" height="137"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="iRS-HG-J0x">
+                                <rect key="frame" x="0.0" y="324" width="414" height="538"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="eUR-Qt-d2b">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eUR-Qt-d2b" id="VED-yM-Cic">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fsY-lQ-rkF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aw8-3J-CEg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RMY-Ne-yJ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1721.7391304347827" y="802.90178571428567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KsY-Tg-YCQ">

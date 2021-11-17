@@ -11,6 +11,9 @@ import Firebase
 class fasionSaveView: UIViewController {
     
     
+    @IBOutlet weak var imageOne: UIImageView!
+    
+    
     var collectionname:String = ""
 
     override func viewDidLoad() {
@@ -18,6 +21,17 @@ class fasionSaveView: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func libraryBtn(_ sender: Any) {
+    
+    
+    }
+    
+    @IBAction func cameraBtn(_ sender: Any) {
+        
+    }
+    
 
     
     @IBAction func saveBtn(_ sender: Any) {

@@ -26,12 +26,19 @@ class top: UITableViewController {
     @IBOutlet weak var hobbyImage: UIImageView!
     
     
+    @IBOutlet weak var settingBtn: UIBarButtonItem!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let user = Auth.auth().currentUser
         
         print(user?.email)
+        
+//        setting btn
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape"))
         
 //        画像を角丸にする
         self.fasionImage.layer.cornerRadius = self.fasionImage.frame.size.width * 0.5
