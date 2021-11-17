@@ -36,9 +36,9 @@ class top: UITableViewController {
         
         print(user?.email)
         
-//        setting btn
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape"))
+//        settinの画像イメージ
+        settingBtn.image = UIImage(systemName: "gearshape")
         
 //        画像を角丸にする
         self.fasionImage.layer.cornerRadius = self.fasionImage.frame.size.width * 0.5
