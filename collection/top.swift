@@ -23,6 +23,7 @@ class top: UITableViewController {
     
     @IBOutlet weak var fasionImage: UIImageView!
     @IBOutlet weak var musicImage: UIImageView!
+    @IBOutlet weak var createImage: UIImageView!
     @IBOutlet weak var hobbyImage: UIImageView!
     
     
@@ -45,6 +46,9 @@ class top: UITableViewController {
         self.fasionImage.clipsToBounds = true
         self.hobbyImage.layer.cornerRadius = self.hobbyImage.frame.size.width * 0.5
         self.hobbyImage.clipsToBounds = true
+        self.createImage.layer.cornerRadius = self.createImage.frame.size.width * 0.5
+        self.createImage.clipsToBounds = true
+        
         
         tableview.delegate = self
         tableview.dataSource = self
@@ -80,7 +84,7 @@ class top: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 4
     }
     
 //    高さ
