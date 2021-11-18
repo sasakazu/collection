@@ -12,6 +12,7 @@ target 'collection' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
+  pod 'SDWebImage'
 
   target 'collectionTests' do
     inherit! :search_paths

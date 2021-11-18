@@ -10,8 +10,10 @@ import Firebase
 
 class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var myID = ""
     
     var collectionItems:[String] = []
+    var documentID:[String] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
@@ -31,6 +33,26 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        myID = documentID[indexPath.row]
+        performSegue(withIdentifier: "sendData", sender: self)
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "sendData" {
+            if let nextVC = segue.destination as? fasionDetailView {
+              
+                nextVC.id = myID
+            
+            
+        }
+    }
+}
+    
     
     @IBOutlet weak var fasionTable: UITableView!
     
@@ -58,6 +80,9 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     print("\(document.documentID) => \(document.data())")
                     
                     self.collectionItems = querySnapshot!.documents.compactMap { $0.data()["collectionName"] as? String }
+                    self.documentID = querySnapshot!.documents.compactMap { $0.data()["documentID"] as? String }
+                    
+                    
                     
                 }
                 self.fasionTable.reloadData()
