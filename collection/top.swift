@@ -30,8 +30,16 @@ class top: UITableViewController {
     @IBOutlet weak var settingBtn: UIBarButtonItem!
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewDidLoad()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
         let user = Auth.auth().currentUser
         
