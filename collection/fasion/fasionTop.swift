@@ -79,7 +79,7 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     
-                    self.collectionItems = querySnapshot!.documents.compactMap { $0.data()["collectionName"] as? String }
+                    self.collectionItems = querySnapshot!.documents.compactMap { $0.data()["fasionName"] as? String }
                     self.documentID = querySnapshot!.documents.compactMap { $0.data()["documentID"] as? String }
                     
                     

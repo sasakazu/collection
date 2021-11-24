@@ -63,7 +63,7 @@ class top: UITableViewController {
             } else {
                 for document in querySnapshot!.documents {
                     
-                    self.fasionCount = querySnapshot!.documents.compactMap { $0.data()["collectionName"] as? String }
+                    self.fasionCount = querySnapshot!.documents.compactMap { $0.data()["fasionName"] as? String }
                     
                     self.fasion.text = self.fasionCount.count.description
                     

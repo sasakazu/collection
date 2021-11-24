@@ -13,6 +13,7 @@ target 'collection' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'SDWebImage'
+  pod 'DKImagePickerController'
 
   target 'collectionTests' do
     inherit! :search_paths

@@ -344,6 +344,56 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
+  - CropViewController (2.6.0)
+  - DKCamera (1.6.7)
+  - DKImagePickerController (4.3.2):
+    - DKImagePickerController/Camera (= 4.3.2)
+    - DKImagePickerController/Core (= 4.3.2)
+    - DKImagePickerController/ImageDataManager (= 4.3.2)
+    - DKImagePickerController/InlineCamera (= 4.3.2)
+    - DKImagePickerController/PhotoEditor (= 4.3.2)
+    - DKImagePickerController/PhotoGallery (= 4.3.2)
+    - DKImagePickerController/Resource (= 4.3.2)
+  - DKImagePickerController/Camera (4.3.2):
+    - DKCamera
+    - DKImagePickerController/Core
+  - DKImagePickerController/Core (4.3.2):
+    - DKImagePickerController/ImageDataManager
+    - DKImagePickerController/Resource
+  - DKImagePickerController/ImageDataManager (4.3.2)
+  - DKImagePickerController/InlineCamera (4.3.2):
+    - DKCamera
+    - DKImagePickerController/Core
+  - DKImagePickerController/PhotoEditor (4.3.2):
+    - CropViewController (~> 2.5)
+    - DKImagePickerController/Core
+  - DKImagePickerController/PhotoGallery (4.3.2):
+    - DKImagePickerController/Core
+    - DKPhotoGallery
+  - DKImagePickerController/Resource (4.3.2)
+  - DKPhotoGallery (0.0.17):
+    - DKPhotoGallery/Core (= 0.0.17)
+    - DKPhotoGallery/Model (= 0.0.17)
+    - DKPhotoGallery/Preview (= 0.0.17)
+    - DKPhotoGallery/Resource (= 0.0.17)
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Core (0.0.17):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Preview
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Model (0.0.17):
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Preview (0.0.17):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Resource
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Resource (0.0.17):
+    - SDWebImage
+    - SwiftyGif
   - Firebase/Analytics (8.9.1):
     - Firebase/Core
   - Firebase/Auth (8.9.1):
@@ -491,8 +541,10 @@ PODS:
   - SDWebImage (5.12.1):
     - SDWebImage/Core (= 5.12.1)
   - SDWebImage/Core (5.12.1)
+  - SwiftyGif (5.4.0)
 
 DEPENDENCIES:
+  - DKImagePickerController
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
@@ -503,6 +555,10 @@ SPEC REPOS:
   trunk:
     - abseil
     - BoringSSL-GRPC
+    - CropViewController
+    - DKCamera
+    - DKImagePickerController
+    - DKPhotoGallery
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -521,10 +577,15 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SDWebImage
+    - SwiftyGif
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
+  CropViewController: 7093b39ec3cb508531b22d35773e06cecd7378d8
+  DKCamera: a902b66921fca14b7a75266feb8c7568aa7caa71
+  DKImagePickerController: b5eb7f7a388e4643264105d648d01f727110fc3d
+  DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
   Firebase: fb5114cd2bf96e2ff7bcb01d0d9a156cf5fd2f07
   FirebaseAnalytics: 4ab446ce08a3fe52e8a4303dd997cf26276bf968
   FirebaseAuth: 2b78b2a32c07b3ecfa4970bdf1d3632b8304099b
@@ -543,7 +604,8 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
+  SwiftyGif: 5d4af95df24caf1c570dbbcb32a3b8a0763bc6d7
 
-PODFILE CHECKSUM: 94e43f392790f53cc654091b0cfa5cb2657068dd
+PODFILE CHECKSUM: 9c4dcad33ad61410a8434ed17b39d4bf5cbd77c7
 
 COCOAPODS: 1.11.2

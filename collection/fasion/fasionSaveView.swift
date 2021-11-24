@@ -8,163 +8,186 @@
 import UIKit
 import Firebase
 import SwiftUI
+import DKImagePickerController
 
-class fasionSaveView: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate,UICollectionViewDataSource {
+   
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return photos.count
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! fasionSaveCollectionViewCell
+        
+        cell.imageViewSave.image = photos[indexPath.row]
+             
+        return cell
+        
+    }
     
     
-    @IBOutlet weak var imageOne: UIImageView!
+    
+    @IBOutlet weak var fasionCollectionView: UICollectionView!
+    
     
     var postImageOne:String = ""
     var collectionname:String = ""
+    
+    var photos: [UIImage] = []
+    var urls = [String]()
+    var selectedCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fasionCollectionView.delegate = self
+        fasionCollectionView.dataSource = self
 
+        let nib = UINib(nibName: "fasionSaveCollectionViewCell", bundle: nil)
+        fasionCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
+        
         // Do any additional setup after loading the view.
     }
     
     
     @IBAction func libraryBtn(_ sender: Any) {
     
-        let sourceType:UIImagePickerController.SourceType =
-                 UIImagePickerController.SourceType.photoLibrary
-             
-             if UIImagePickerController.isSourceTypeAvailable(
-                 UIImagePickerController.SourceType.photoLibrary){
-                 // インスタンスの作成
-                 let cameraPicker = UIImagePickerController()
-                 cameraPicker.sourceType = sourceType
-                 cameraPicker.delegate = self
-                 self.present(cameraPicker, animated: true, completion: nil)
-                 
-//                 label.text = "Tap the [Start] to save a picture"
-             }
-             else{
-//                 label.text = "error"
-                 
-             }
-    
-    }
-    
-    @IBAction func cameraBtn(_ sender: Any) {
         
-        let sourceType:UIImagePickerController.SourceType =
-                   UIImagePickerController.SourceType.camera
-               // カメラが利用可能かチェック
-               if UIImagePickerController.isSourceTypeAvailable(
-                   UIImagePickerController.SourceType.camera){
-                   // インスタンスの作成
-                   let cameraPicker = UIImagePickerController()
-                   cameraPicker.sourceType = sourceType
-                   cameraPicker.delegate = self
-                   self.present(cameraPicker, animated: true, completion: nil)
-                   
-               }
-               else{
-                   print("error")
-                   
-               }
-        
+        let imagePicker = DKImagePickerController()
+        imagePicker.maxSelectableCount = 6
+
+           //カメラモード、写真モードの選択
+        imagePicker.sourceType = .photo
+
+           //キャンセルボタンの有効化
+        imagePicker.showsCancelButton = true
+
+           //UIのカスタマイズ
+   //        imagePicker.UIDelegate = CustomUIDelegate()
+
+        imagePicker.didSelectAssets = { (assets: [DKAsset]) in
+               // ここでは一旦全削除する
+        self.photos.removeAll()
+
+               // assets に保存された枚数
+        self.selectedCount = assets.count
+
+        for asset in assets {
+                   // asset からのダウンロードは非同期（iCloudなどにアクセスするため）
+            asset.fetchFullScreenImage(completeBlock: { (image, info) in
+                       // もし image が nil だったら早期リターン
+                guard let image = image else {
+                    self.selectedCount -= 1
+                    return
+                }
+
+                       // photos に追加
+                self.photos.append(image)
+
+                
+                print(self.photos)
+//                    self.collection.reloadData()
+                       // reloadImage 内部で UITableView を操作しているため
+                       // メインスレッドで実行
+                DispatchQueue.main.async {
+                    self.reloadImage()
+                }
+            })
+        }
     }
-    
-    //　撮影が完了時した時に呼ばれる
-      func imagePickerController(_ imagePicker: UIImagePickerController,
-              didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
-          
-          if let pickedImage = info[.originalImage]
-              as? UIImage {
-              
-              imageOne.contentMode = .scaleAspectFit
-              imageOne.image = pickedImage
-              
-          }
-   
-          //閉じる処理
-          imagePicker.dismiss(animated: true, completion: nil)
-          print("Tap the [Save] to save a picture")
-          
-      }
+
+           // ここでDKImagePickerを表示
+        present(imagePicker, animated: true, completion: nil)
       
-      // 撮影がキャンセルされた時に呼ばれる
-      func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-          picker.dismiss(animated: true, completion: nil)
-          print("Canceled")
-      }
-    
-    
-    // 書き込み完了結果の受け取り
-    @objc func image(_ image: UIImage,
-                     didFinishSavingWithError error: NSError!,
-                     contextInfo: UnsafeMutableRawPointer) {
-        
-        if error != nil {
-            print(error.code)
-//            label.text = "Save Failed !"
-        }
-        else{
-            print("Save Succeeded")
-        }
     }
+
+
+
+    func reloadImage() {
+         // photos.count と asset.count が等しければ tableView を再描画
+         if photos.count == selectedCount {
+             fasionCollectionView.reloadData()
+         }
+     }
+
     
+    
+
+
     @IBAction func saveBtn(_ sender: Any) {
     
-        
-        let image:UIImage! = imageOne.image
         let user = Auth.auth().currentUser
         
+        var count = 0
         
-        let date = NSDate()
-              let currentTimeStampInSecond = UInt64(floor(date.timeIntervalSince1970 * 1000))
-        let storageRef = Storage.storage().reference().child("users").child(user!.uid).child(self.collectionname).child("post1.jpg")
+    for image in photos {
 
         
-              let metaData = StorageMetadata()
-              metaData.contentType = "image/jpg"
-              if let uploadData = self.imageOne.image?.jpegData(compressionQuality: 0.9) {
-                  storageRef.putData(uploadData, metadata: metaData) { (metadata , error) in
-                      if error != nil {
-                          print("error: \(error?.localizedDescription)")
-                      }
-                      storageRef.downloadURL(completion: { (url, error) in
-                          if error != nil {
-                              print("error: \(error?.localizedDescription)")
-                          }
-                          print("url: \(url?.absoluteString)")
-                          
-                          self.postImageOne = url?.absoluteString ?? "no url"
-                        
-                                     
-                          let db = Firestore.firestore()
-                          
-                          let Ref = db.collection("users").document(user!.uid).collection("fasion")
-                              
-                          let doc = Ref.document()
-                              
-                          let somedata = [ "collectionName": self.collectionname,
-                                            "documentID": doc.documentID,
-                                           "imageOne": self.postImageOne
-                                        
-                          ]
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
 
-                          Ref.document(doc.documentID).setData(somedata) { err in
-                              
-                              if let err = err {
-                                  print("Error writing document: \(err)")
-                              } else {
-                                  print("Document successfully written!")
-                              }
-                          }
-                                     
-                          self.navigationController?.popToRootViewController(animated: true)
+        let imageName = NSUUID().uuidString // Unique string to reference image
+        let storageRef = Storage.storage().reference().child("posts").child(user!.uid).child(self.collectionname).child(imageName)
+            
+        guard let data = image.jpegData(compressionQuality: 0.1) else {return}
+             storageRef.putData(data, metadata: metaData) { (metadata, error) in
+                 if error != nil {
+                     return
+                 }
+                 storageRef.downloadURL(completion: { (url, error) in
+                     if let photoUrl = url?.absoluteString {
+                         let url = photoUrl
+
+
+                         self.urls.append(url)
+                         
+                         
+                         let db = Firestore.firestore()
+
+                                      
+                         let Ref = db.collection("users").document(user!.uid).collection("fasion")
                              
-                      })
-                  }
-              }
-        
-   
+                         let aDoc = Ref.document()
+                         
+                         print(aDoc.documentID)
+                         
+                         let someData = [
+                            "images": self.urls,
+                            "fasionName": self.collectionname,
+                            "documentID":aDoc.documentID
+                         ] as [String : Any]
+                             
+                         Ref.document(self.collectionname).setData(someData)
+                            {
+                             err in
+                             if let err = err {
+                                 print("Error writing document: \(err)")
+                                     } else {
+                                         print("Document successfully written!")
+                                        }
+                                }
+                     }
+                     
 
-        
+                     count += 1
+                     if count == self.photos.count {
+                         print("self.urls.count \(self.urls.count)")
+
+
+                     }
+                 })
+             }
+
+         }
+
+        self.navigationController?.popToRootViewController(animated: true)
+
     }
+    
     
     
     

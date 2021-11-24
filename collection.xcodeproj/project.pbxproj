@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		731F88CA274CF03600AA098D /* fasionSaveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731F88C8274CF03600AA098D /* fasionSaveCollectionViewCell.swift */; };
+		731F88CB274CF03600AA098D /* fasionSaveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 731F88C9274CF03600AA098D /* fasionSaveCollectionViewCell.xib */; };
 		732F815E273FB67400B4BF62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732F815D273FB67400B4BF62 /* AppDelegate.swift */; };
 		732F8160273FB67400B4BF62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732F815F273FB67400B4BF62 /* SceneDelegate.swift */; };
 		732F8162273FB67400B4BF62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732F8161273FB67400B4BF62 /* ViewController.swift */; };
@@ -58,6 +60,8 @@
 		4A2CA51658ABBFBB89845D25 /* Pods-collectionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collectionTests.release.xcconfig"; path = "Target Support Files/Pods-collectionTests/Pods-collectionTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E33F0E6046C2865F9D6A015 /* Pods-collectionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collectionTests.debug.xcconfig"; path = "Target Support Files/Pods-collectionTests/Pods-collectionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6553DC885404609D7D5D4AFA /* Pods-collection-collectionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collection-collectionUITests.debug.xcconfig"; path = "Target Support Files/Pods-collection-collectionUITests/Pods-collection-collectionUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		731F88C8274CF03600AA098D /* fasionSaveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fasionSaveCollectionViewCell.swift; sourceTree = "<group>"; };
+		731F88C9274CF03600AA098D /* fasionSaveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = fasionSaveCollectionViewCell.xib; sourceTree = "<group>"; };
 		732F815A273FB67400B4BF62 /* collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = collection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		732F815D273FB67400B4BF62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		732F815F273FB67400B4BF62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 				73BB5C382745064900FE82A7 /* fasionDetailView.swift */,
 				7397676427464D41006A2DDC /* fasionDetailViewCell.swift */,
 				7397676527464D41006A2DDC /* fasionDetailViewCell.xib */,
+				731F88C8274CF03600AA098D /* fasionSaveCollectionViewCell.swift */,
+				731F88C9274CF03600AA098D /* fasionSaveCollectionViewCell.xib */,
 			);
 			path = fasion;
 			sourceTree = "<group>";
@@ -359,6 +365,7 @@
 				732F8167273FB67600B4BF62 /* Assets.xcassets in Resources */,
 				732F8165273FB67500B4BF62 /* Main.storyboard in Resources */,
 				732F818E273FB7E600B4BF62 /* GoogleService-Info.plist in Resources */,
+				731F88CB274CF03600AA098D /* fasionSaveCollectionViewCell.xib in Resources */,
 				732F81A52743BE1C00B4BF62 /* fasionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +497,7 @@
 				732F8162273FB67400B4BF62 /* ViewController.swift in Sources */,
 				7397676627464D41006A2DDC /* fasionDetailViewCell.swift in Sources */,
 				732F815E273FB67400B4BF62 /* AppDelegate.swift in Sources */,
+				731F88CA274CF03600AA098D /* fasionSaveCollectionViewCell.swift in Sources */,
 				732F8160273FB67400B4BF62 /* SceneDelegate.swift in Sources */,
 				73BB5C392745064A00FE82A7 /* fasionDetailView.swift in Sources */,
 				732F81A42743BE1C00B4BF62 /* fasionTableViewCell.swift in Sources */,
