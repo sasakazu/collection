@@ -12,6 +12,7 @@ class fasionDetailViewCell: UICollectionViewCell {
     
     @IBOutlet weak var fasionImage: UIImageView!
     
+    @IBOutlet weak var label: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

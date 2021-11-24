@@ -142,9 +142,7 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
                      if let photoUrl = url?.absoluteString {
                          let url = photoUrl
 
-
                          self.urls.append(url)
-                         
                          
                          let db = Firestore.firestore()
 

@@ -11,6 +11,7 @@ import Firebase
 class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var myID = ""
+    var myName = ""
     
     var collectionItems:[String] = []
     var documentID:[String] = []
@@ -36,6 +37,8 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         myID = documentID[indexPath.row]
+        
+        myName = collectionItems[indexPath.row]
         performSegue(withIdentifier: "sendData", sender: self)
     }
     
@@ -47,7 +50,7 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if let nextVC = segue.destination as? fasionDetailView {
               
                 nextVC.id = myID
-            
+                nextVC.collectionname = myName
             
         }
     }

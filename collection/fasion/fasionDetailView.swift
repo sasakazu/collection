@@ -21,10 +21,10 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! fasionDetailViewCell
         
-        self.imageData = items[indexPath.row]
-            
+        imageData = items[indexPath.row]
+
         cell.fasionImage.sd_setImage(with: URL(string:imageData), placeholderImage: UIImage(named: "placeholder"))
-        
+
         return cell
         
     }
@@ -33,7 +33,9 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     
     var id:String = ""
     var items:[String] = []
+    var nameitems = ""
     var imageData = ""
+    var collectionname:String = ""
     
     @IBOutlet weak var collectionview: UICollectionView!
     
@@ -49,26 +51,31 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         
         self.collectionview.register(nib, forCellWithReuseIdentifier: "Cell")
         
-//        print(id)
+        print(id)
+        print(collectionname)
         
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
         
-        db.collection("users").document(user!.uid).collection("fasion").whereField("documentID", isEqualTo: self.id)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-//                        print("\(document.documentID) => \(document.data())")
-                        
-                        self.items = querySnapshot!.documents.compactMap { $0.data()["imageOne"] as? String }
-                        
-                        print(self.items)
-                        
-                    }
-                    self.collectionview.reloadData()
+        db.collection("users").document(user!.uid).collection("fasion").whereField("fasionName", isEqualTo: collectionname).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+    
+
+        
+                    self.items = document["images"] as? [String] ?? ["ffd"]
+//                    self.nameitems = document["fasionName"] as? [String] ?? ["ffd"]
+
+                        print("kmojhohouo\(self.items)")
+
+                  
                 }
+              
+            }
+            
+            self.collectionview.reloadData()
 
         }
         
