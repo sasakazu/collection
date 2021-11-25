@@ -396,9 +396,16 @@
                             <constraint firstItem="2dk-xK-q9U" firstAttribute="leading" secondItem="jOb-Jh-2Qk" secondAttribute="leading" id="wSC-E3-MJs"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="xkI-Co-H4n"/>
+                    <navigationItem key="navigationItem" id="xkI-Co-H4n">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bfh-Mc-WXP">
+                            <connections>
+                                <segue destination="ccw-ua-KSK" kind="show" id="UhE-AV-Y4m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionview" destination="2dk-xK-q9U" id="3vP-IT-Hch"/>
+                        <segue destination="u9x-Gn-im6" kind="show" identifier="showImageView" id="xgO-p7-6XC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F0j-OE-0Js" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -535,6 +542,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xSc-id-zF7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5722" y="84"/>
+        </scene>
+        <!--Show Fasion Image View-->
+        <scene sceneID="YGh-Bk-r8P">
+            <objects>
+                <viewController id="u9x-Gn-im6" customClass="showFasionImageView" customModule="collection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RdF-bT-QF4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dr9-sm-rV6">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="808" id="B93-MW-6V2"/>
+                                    <constraint firstAttribute="width" constant="414" id="CBB-ut-dwJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Cuu-SE-aYv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="dr9-sm-rV6" secondAttribute="bottom" constant="-34" id="4fv-4N-d9D"/>
+                            <constraint firstItem="dr9-sm-rV6" firstAttribute="top" secondItem="Cuu-SE-aYv" secondAttribute="top" id="C8R-9B-jvl"/>
+                            <constraint firstItem="dr9-sm-rV6" firstAttribute="leading" secondItem="Cuu-SE-aYv" secondAttribute="leading" id="Dx8-A2-N48"/>
+                            <constraint firstItem="dr9-sm-rV6" firstAttribute="top" secondItem="Cuu-SE-aYv" secondAttribute="top" id="SBS-vh-AVw"/>
+                            <constraint firstItem="dr9-sm-rV6" firstAttribute="centerX" secondItem="RdF-bT-QF4" secondAttribute="centerX" id="Xs3-bm-UyD"/>
+                            <constraint firstItem="dr9-sm-rV6" firstAttribute="trailing" secondItem="Cuu-SE-aYv" secondAttribute="trailing" id="f5U-XW-CF3"/>
+                            <constraint firstAttribute="bottom" secondItem="dr9-sm-rV6" secondAttribute="bottom" id="j9C-xN-y75"/>
+                            <constraint firstItem="dr9-sm-rV6" firstAttribute="leading" secondItem="Cuu-SE-aYv" secondAttribute="leading" id="yHW-Ks-k8k"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="geY-8u-1Ep">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="bYw-La-rXj">
+                            <color key="tintColor" systemColor="systemRedColor"/>
+                            <connections>
+                                <action selector="trashBtn:" destination="u9x-Gn-im6" id="Dya-xB-fem"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="showImage" destination="dr9-sm-rV6" id="d1L-nx-qfc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ogO-yp-e5s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6492.753623188406" y="83.705357142857139"/>
         </scene>
         <!--Login-->
         <scene sceneID="zAO-eD-y5c">
@@ -839,6 +891,9 @@
             <point key="canvasLocation" x="3295.652173913044" y="-609.375"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="UhE-AV-Y4m"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="family" width="394" height="394"/>
         <image name="fasion" width="490" height="490"/>

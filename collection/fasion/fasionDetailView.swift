@@ -29,12 +29,37 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        sendData = items[indexPath.row]
+        performSegue(withIdentifier: "showImageView", sender: self)
+        
+    }
+    
+    
+    //    詳細画面にデータを送る
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+            
+//            if segue.identifier == "showImageView" {
+//
+            let nextVC = segue.destination as? showFasionImageView
+
+            nextVC?.imagedata = sendData
+
+//            }
+        }
+
+   
+    
+
 
     
     var id:String = ""
     var items:[String] = []
     var nameitems = ""
     var imageData = ""
+    var sendData = ""
     var collectionname:String = ""
     
     @IBOutlet weak var collectionview: UICollectionView!
