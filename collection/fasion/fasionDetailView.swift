@@ -32,38 +32,43 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         sendData = items[indexPath.row]
+        sendImageNamePost = sendImageName[indexPath.row]
         performSegue(withIdentifier: "showImageView", sender: self)
         
     }
     
     
     //    詳細画面にデータを送る
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
+        let nextVC = segue.destination as? showFasionImageView
+
+        nextVC?.imagedata = sendData
+        nextVC?.collename = collectionname
+        nextVC?.imagenames = sendImageNamePost
             
-//            if segue.identifier == "showImageView" {
-//
-            let nextVC = segue.destination as? showFasionImageView
-
-            nextVC?.imagedata = sendData
-
-//            }
         }
 
-   
-    
-
-
-    
     var id:String = ""
     var items:[String] = []
+    var itemsName:[String] = []
     var nameitems = ""
     var imageData = ""
     var sendData = ""
+    var sendName = ""
+    var sendImageNamePost = ""
+    var sendImageName:[String] = []
     var collectionname:String = ""
     
     @IBOutlet weak var collectionview: UICollectionView!
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewDidLoad()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,18 +87,19 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
         
-        db.collection("users").document(user!.uid).collection("fasion").whereField("fasionName", isEqualTo: collectionname).getDocuments() { (querySnapshot, err) in
+        db.collection("users").document(user!.uid).collection("fasion").whereField("fasionName", isEqualTo: collectionname).getDocuments() { [self] (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
     
 
-        
-                    self.items = document["images"] as? [String] ?? ["ffd"]
-//                    self.nameitems = document["fasionName"] as? [String] ?? ["ffd"]
+                    self.items = document["images"] as? [String] ?? [""]
+                    self.sendImageName = document["imageNames"] as? [String] ?? [""]
+                    self.sendName = collectionname
 
-                        print("kmojhohouo\(self.items)")
+
+                    print("kmojhohouo\(self.items)")
 
                   
                 }

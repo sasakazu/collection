@@ -39,6 +39,7 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
     
     var photos: [UIImage] = []
     var urls = [String]()
+    var imageNames = [String]()
     var selectedCount = 0
 
     override func viewDidLoad() {
@@ -146,6 +147,8 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
                          
                          let db = Firestore.firestore()
 
+                         self.imageNames.append(imageName)
+//                         imageNames =
                                       
                          let Ref = db.collection("users").document(user!.uid).collection("fasion")
                              
@@ -155,11 +158,12 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
                          
                          let someData = [
                             "images": self.urls,
+                            "imageNames": self.imageNames,
                             "fasionName": self.collectionname,
                             "documentID":aDoc.documentID
                          ] as [String : Any]
                              
-                         Ref.document(self.collectionname).setData(someData)
+                         Ref.document(self.collectionname).updateData(someData)
                             {
                              err in
                              if let err = err {
