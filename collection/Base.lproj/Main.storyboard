@@ -358,13 +358,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2dk-xK-q9U">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2dk-xK-q9U">
+                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="LdB-tr-J70"/>
-                                    <constraint firstAttribute="height" constant="774" id="xgP-AG-V79"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ncb-L1-F4K">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -386,14 +383,27 @@
                                     <outlet property="delegate" destination="zoI-4N-eb1" id="whW-4b-K9T"/>
                                 </connections>
                             </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsJ-Ro-ROz">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Q6s-zt-HoG"/>
+                                    <constraint firstAttribute="width" constant="414" id="qDL-tz-vij"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Item" id="PA6-DX-ESU"/>
+                                    <barButtonItem width="305" style="plain" systemItem="fixedSpace" id="HdZ-wG-ui0"/>
+                                    <barButtonItem systemItem="trash" id="Lhz-vB-jD8">
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jOb-Jh-2Qk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2dk-xK-q9U" firstAttribute="bottom" secondItem="jOb-Jh-2Qk" secondAttribute="bottom" id="8wh-YM-dkt"/>
-                            <constraint firstItem="2dk-xK-q9U" firstAttribute="trailing" secondItem="jOb-Jh-2Qk" secondAttribute="trailing" id="Zel-S9-OUM"/>
-                            <constraint firstItem="2dk-xK-q9U" firstAttribute="top" secondItem="jOb-Jh-2Qk" secondAttribute="top" id="jBt-hk-bnd"/>
-                            <constraint firstItem="2dk-xK-q9U" firstAttribute="leading" secondItem="jOb-Jh-2Qk" secondAttribute="leading" id="wSC-E3-MJs"/>
+                            <constraint firstItem="zsJ-Ro-ROz" firstAttribute="trailing" secondItem="jOb-Jh-2Qk" secondAttribute="trailing" id="2Dq-6B-ta1"/>
+                            <constraint firstItem="zsJ-Ro-ROz" firstAttribute="leading" secondItem="jOb-Jh-2Qk" secondAttribute="leading" id="BIC-iW-WKo"/>
+                            <constraint firstItem="zsJ-Ro-ROz" firstAttribute="bottom" secondItem="jOb-Jh-2Qk" secondAttribute="bottom" id="sTd-v1-DOC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xkI-Co-H4n">
