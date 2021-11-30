@@ -33,7 +33,9 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         
         sendData = items[indexPath.row]
         sendImageNamePost = sendImageName[indexPath.row]
+        
         performSegue(withIdentifier: "showImageView", sender: self)
+        performSegue(withIdentifier: "sendAddView", sender: self)
         
     }
     
@@ -41,12 +43,21 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     //    詳細画面にデータを送る
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        let nextVC = segue.destination as? showFasionImageView
+        if let nextVC = segue.destination as? showFasionImageView {
 
-        nextVC?.imagedata = sendData
-        nextVC?.collename = collectionname
-        nextVC?.imagenames = sendImageNamePost
+            nextVC.imagedata = sendData
+            nextVC.collename = collectionname
+            nextVC.imagenames = sendImageNamePost
+            }
+        else if let addVC = segue.destination as? fasionAddView {
             
+            addVC.addname = collectionname
+            addVC.imageItems = items
+            addVC.imageNames = sendImageName
+            
+            
+        }
+        
         }
 
     var id:String = ""
@@ -60,6 +71,7 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     var sendImageName:[String] = []
     var collectionname:String = ""
     
+    
     @IBOutlet weak var collectionview: UICollectionView!
     
     
@@ -67,6 +79,7 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         super.viewWillAppear(animated)
         
         viewDidLoad()
+        collectionview.reloadData()
         
     }
     

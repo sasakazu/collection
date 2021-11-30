@@ -397,7 +397,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xkI-Co-H4n">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bfh-Mc-WXP"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bfh-Mc-WXP">
+                            <connections>
+                                <segue destination="i9e-aK-iFa" kind="showDetail" identifier="sendAddView" id="ZuA-G8-eii"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionview" destination="2dk-xK-q9U" id="3vP-IT-Hch"/>
@@ -408,7 +412,7 @@
             </objects>
             <point key="canvasLocation" x="4082.6086956521744" y="83.705357142857139"/>
         </scene>
-        <!--Fasion Create View-->
+        <!--新規コレクション追加-->
         <scene sceneID="RiB-1T-tSV">
             <objects>
                 <viewController id="jtR-Wb-snn" customClass="fasionCreateView" customModule="collection" customModuleProvider="target" sceneMemberID="viewController">
@@ -448,7 +452,7 @@
                             <constraint firstItem="aSf-iD-k4K" firstAttribute="trailing" secondItem="zU8-yU-eCF" secondAttribute="trailing" constant="20" id="xzd-F9-3mU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zgk-l4-oeI">
+                    <navigationItem key="navigationItem" title="新規コレクション追加" id="zgk-l4-oeI">
                         <barButtonItem key="rightBarButtonItem" title="次へ" id="Ia6-vY-j8j">
                             <connections>
                                 <action selector="nextBtn:" destination="jtR-Wb-snn" id="IXp-4o-LzZ"/>
@@ -462,7 +466,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ux-ey-0zu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4891" y="84"/>
+            <point key="canvasLocation" x="4871" y="84"/>
         </scene>
         <!--Fasion Save View-->
         <scene sceneID="dLV-VD-Tsi">
@@ -582,7 +586,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ogO-yp-e5s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6492.753623188406" y="83.705357142857139"/>
+            <point key="canvasLocation" x="4083" y="830"/>
         </scene>
         <!--Login-->
         <scene sceneID="zAO-eD-y5c">
@@ -832,7 +836,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDi-D6-Tsx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="-609"/>
+            <point key="canvasLocation" x="2516" y="830"/>
         </scene>
         <!--Settings Acount View Controller-->
         <scene sceneID="qQQ-ZX-TKA">
@@ -884,7 +888,84 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Axd-xI-EED" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3295.652173913044" y="-609.375"/>
+            <point key="canvasLocation" x="3297" y="830"/>
+        </scene>
+        <!--Fasion Add View-->
+        <scene sceneID="qhb-bI-VvS">
+            <objects>
+                <viewController id="i9e-aK-iFa" customClass="fasionAddView" customModule="collection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ocS-Rj-QCF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G4G-T2-EB1">
+                                <rect key="frame" x="0.0" y="57" width="414" height="785"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="785" id="T84-YV-fJU"/>
+                                    <constraint firstAttribute="width" constant="414" id="ahT-do-PTF"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jP2-J1-6EL">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="2ov-0v-p1A">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="635-80-4ay">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="i9e-aK-iFa" id="QXo-Bd-WTf"/>
+                                    <outlet property="delegate" destination="i9e-aK-iFa" id="fP6-Xi-WYp"/>
+                                </connections>
+                            </collectionView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K51-t5-uAs">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="4XI-53-JvH"/>
+                                    <constraint firstAttribute="height" constant="44" id="vcx-Ge-adJ"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="写真を追加する" id="ZVf-qo-N4X">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="Syl-QX-g7N">
+                                            <connections>
+                                                <action selector="libralyBtn:" destination="i9e-aK-iFa" id="jMh-xY-wJb"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="eBC-yP-Uc2">
+                                            <connections>
+                                                <action selector="saveBtn:" destination="i9e-aK-iFa" id="iF2-em-ZSr"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Agg-Op-HoQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="G4G-T2-EB1" firstAttribute="trailing" secondItem="Agg-Op-HoQ" secondAttribute="trailing" id="9z4-tp-anb"/>
+                            <constraint firstItem="K51-t5-uAs" firstAttribute="trailing" secondItem="Agg-Op-HoQ" secondAttribute="trailing" id="FZg-ce-tb2"/>
+                            <constraint firstItem="G4G-T2-EB1" firstAttribute="top" secondItem="K51-t5-uAs" secondAttribute="bottom" constant="13" id="GX6-G7-GWw"/>
+                            <constraint firstItem="K51-t5-uAs" firstAttribute="leading" secondItem="Agg-Op-HoQ" secondAttribute="leading" id="Lgx-Vm-1ac"/>
+                            <constraint firstItem="G4G-T2-EB1" firstAttribute="leading" secondItem="Agg-Op-HoQ" secondAttribute="leading" id="Uyg-Qv-p6g"/>
+                            <constraint firstItem="K51-t5-uAs" firstAttribute="top" secondItem="Agg-Op-HoQ" secondAttribute="top" id="igC-XO-KwO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addCollectionView" destination="G4G-T2-EB1" id="2t1-NZ-Y2c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gDI-6d-dc3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4082.6086956521744" y="-609.375"/>
         </scene>
     </scenes>
     <resources>

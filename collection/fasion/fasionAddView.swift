@@ -1,84 +1,79 @@
 //
-//  fasionSaveView.swift
+//  fasionAddView.swift
 //  collection
 //
-//  Created by 笹倉一也 on 2021/11/16.
+//  Created by 笹倉一也 on 2021/11/28.
 //
 
 import UIKit
 import Firebase
-import SwiftUI
 import DKImagePickerController
 
-class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate,UICollectionViewDataSource {
-   
+class fasionAddView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    var addname = ""
+    var urls = [String]()
+    var imageNames = [String]()
+    var imageItems:[String] = []
+    
+    var addPhotos: [UIImage] = []
+    var selectedCount = 0
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return photos.count
+        return addPhotos.count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! fasionSaveCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! fasionAddCollectionViewCell
         
-        cell.imageViewSave.image = photos[indexPath.row]
+        cell.fasionAddimageView.image = addPhotos[indexPath.row]
              
         return cell
         
     }
     
-    
-    
-    @IBOutlet weak var fasionCollectionView: UICollectionView!
-    
-    
-    var postImageOne:String = ""
-    var collectionname:String = ""
-    
-    var photos: [UIImage] = []
-    var urls = [String]()
-    var imageNames = [String]()
-    var selectedCount = 0
 
+    
+    @IBOutlet weak var addCollectionView: UICollectionView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        fasionCollectionView.delegate = self
-        fasionCollectionView.dataSource = self
 
-        let nib = UINib(nibName: "fasionSaveCollectionViewCell", bundle: nil)
-        fasionCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
+//        print(addname)
+//        print("imagename issssss   \(imageNames)")
+//        print("item isssssssss     \(imageItems)")
+        
+        addCollectionView.delegate = self
+        addCollectionView.dataSource = self
+        
+        let nib = UINib(nibName: "fasionAddCollectionViewCell", bundle: nil)
+        addCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
         
         // Do any additional setup after loading the view.
     }
     
-    
-    @IBAction func libraryBtn(_ sender: Any) {
-    
+    @IBAction func libralyBtn(_ sender: Any) {
         
         let imagePicker = DKImagePickerController()
         imagePicker.maxSelectableCount = 6
 
-           //カメラモード、写真モードの選択
         imagePicker.sourceType = .photo
 
-           //キャンセルボタンの有効化
         imagePicker.showsCancelButton = true
-
-           //UIのカスタマイズ
-   //        imagePicker.UIDelegate = CustomUIDelegate()
 
         imagePicker.didSelectAssets = { (assets: [DKAsset]) in
                // ここでは一旦全削除する
-        self.photos.removeAll()
+        self.addPhotos.removeAll()
 
                // assets に保存された枚数
         self.selectedCount = assets.count
 
         for asset in assets {
-                   // asset からのダウンロードは非同期（iCloudなどにアクセスするため）
+                
             asset.fetchFullScreenImage(completeBlock: { (image, info) in
                        // もし image が nil だったら早期リターン
                 guard let image = image else {
@@ -86,14 +81,13 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
                     return
                 }
 
-                       // photos に追加
-                self.photos.append(image)
+                // photos に追加
+                self.addPhotos.append(image)
 
                 
-                print(self.photos)
-//                    self.collection.reloadData()
-                       // reloadImage 内部で UITableView を操作しているため
-                       // メインスレッドで実行
+                print(self.addPhotos)
+                // reloadImage 内部で UITableView を操作しているため
+                // メインスレッドで実行
                 DispatchQueue.main.async {
                     self.reloadImage()
                 }
@@ -101,38 +95,34 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
         }
     }
 
-           // ここでDKImagePickerを表示
+        // ここでDKImagePickerを表示
         present(imagePicker, animated: true, completion: nil)
-      
+        
     }
-
-
-
+    
     func reloadImage() {
          // photos.count と asset.count が等しければ tableView を再描画
-         if photos.count == selectedCount {
-             fasionCollectionView.reloadData()
+         if addPhotos.count == selectedCount {
+             addCollectionView.reloadData()
          }
      }
-
     
-    
-
-
     @IBAction func saveBtn(_ sender: Any) {
-    
+        
+        
         let user = Auth.auth().currentUser
         
         var count = 0
         
-    for image in photos {
+        for image in addPhotos {
 
         
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
 
-        let imageName = NSUUID().uuidString // Unique string to reference image
-        let storageRef = Storage.storage().reference().child("posts").child(user!.uid).child(self.collectionname).child(imageName)
+        let imageName = NSUUID().uuidString
+            
+        let storageRef = Storage.storage().reference().child("posts").child(user!.uid).child(self.addname).child(imageName)
             
         guard let data = image.jpegData(compressionQuality: 0.1) else {return}
              storageRef.putData(data, metadata: metaData) { (metadata, error) in
@@ -143,12 +133,11 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
                      if let photoUrl = url?.absoluteString {
                          let url = photoUrl
 
-                         self.urls.append(url)
+                         self.imageItems.append(url)
                          
                          let db = Firestore.firestore()
 
                          self.imageNames.append(imageName)
-//                         imageNames =
                                       
                          let Ref = db.collection("users").document(user!.uid).collection("fasion")
                              
@@ -157,13 +146,12 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
                          print(aDoc.documentID)
                          
                          let someData = [
-                            "images": self.urls,
+                            "images": self.imageItems,
                             "imageNames": self.imageNames,
-                            "fasionName": self.collectionname,
-                            "documentID":aDoc.documentID
+                         
                          ] as [String : Any]
                              
-                         Ref.document(self.collectionname).setData(someData)
+                         Ref.document(self.addname).updateData(someData)
                             {
                              err in
                              if let err = err {
@@ -176,7 +164,7 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
                      
 
                      count += 1
-                     if count == self.photos.count {
+                     if count == self.addPhotos.count {
                          print("self.urls.count \(self.urls.count)")
 
 
@@ -186,12 +174,11 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
 
          }
 
-        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.popToRootViewController(animated: true)
 
+        self.dismiss(animated: true, completion: nil)
+        
     }
-    
-    
-    
     
     
     
