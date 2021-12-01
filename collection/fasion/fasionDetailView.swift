@@ -54,12 +54,16 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
             nextVC.imagedata = sendData
             nextVC.collename = collectionname
             nextVC.imagenames = sendImageNamePost
+            nextVC.category = collectionCategoly
+            
             }
+        
         else if let addVC = segue.destination as? fasionAddView {
             
             addVC.addname = collectionname
             addVC.imageItems = items
             addVC.imageNames = sendImageName
+            addVC.category = collectionCategoly
             
             
         }

@@ -14,6 +14,7 @@ class showFasionImageView: UIViewController {
     var imagedata = ""
     var collename = ""
     var imagenames = ""
+    var category = ""
     
     @IBOutlet weak var showImage: UIImageView!
     
@@ -35,7 +36,7 @@ class showFasionImageView: UIViewController {
         
 //        storageの削除
        
-        let desertRef = Storage.storage().reference().child("posts").child(user!.uid).child(collename).child(imagenames)
+        let desertRef = Storage.storage().reference().child("posts").child(user!.uid).child(category).child(collename).child(imagenames)
         
         desertRef.delete { error in
           if let error = error {
@@ -47,7 +48,7 @@ class showFasionImageView: UIViewController {
             
         
         //特定のフィールドの削除
-        let washingtonRef = db.collection("users").document(user!.uid).collection("fasion").document(self.collename)
+        let washingtonRef = db.collection("users").document(user!.uid).collection(category).document(self.collename)
         
         washingtonRef.updateData([
             "images": FieldValue.arrayRemove([self.imagedata]),

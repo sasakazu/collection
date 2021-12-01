@@ -15,6 +15,7 @@ class fasionAddView: UIViewController, UICollectionViewDelegate, UICollectionVie
     var urls = [String]()
     var imageNames = [String]()
     var imageItems:[String] = []
+    var category = ""
     
     var addPhotos: [UIImage] = []
     var selectedCount = 0
@@ -122,7 +123,7 @@ class fasionAddView: UIViewController, UICollectionViewDelegate, UICollectionVie
 
         let imageName = NSUUID().uuidString
             
-        let storageRef = Storage.storage().reference().child("posts").child(user!.uid).child(self.addname).child(imageName)
+            let storageRef = Storage.storage().reference().child("posts").child(user!.uid).child(category).child(self.addname).child(imageName)
             
         guard let data = image.jpegData(compressionQuality: 0.1) else {return}
              storageRef.putData(data, metadata: metaData) { (metadata, error) in
@@ -139,7 +140,7 @@ class fasionAddView: UIViewController, UICollectionViewDelegate, UICollectionVie
 
                          self.imageNames.append(imageName)
                                       
-                         let Ref = db.collection("users").document(user!.uid).collection("fasion")
+                         let Ref = db.collection("users").document(user!.uid).collection(self.category)
                              
                          let aDoc = Ref.document()
                          
