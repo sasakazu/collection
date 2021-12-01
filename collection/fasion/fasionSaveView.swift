@@ -41,6 +41,7 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
     var urls = [String]()
     var imageNames = [String]()
     var selectedCount = 0
+    var colle = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,7 +133,7 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
         metaData.contentType = "image/jpg"
 
         let imageName = NSUUID().uuidString // Unique string to reference image
-        let storageRef = Storage.storage().reference().child("posts").child(user!.uid).child(self.collectionname).child(imageName)
+        let storageRef = Storage.storage().reference().child("posts").child(user!.uid).child(self.colle).child(collectionname).child(imageName)
             
         guard let data = image.jpegData(compressionQuality: 0.1) else {return}
              storageRef.putData(data, metadata: metaData) { (metadata, error) in
@@ -150,7 +151,7 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
                          self.imageNames.append(imageName)
 //                         imageNames =
                                       
-                         let Ref = db.collection("users").document(user!.uid).collection("fasion")
+                         let Ref = db.collection("users").document(user!.uid).collection(self.colle)
                              
                          let aDoc = Ref.document()
                          

@@ -35,10 +35,16 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         sendImageNamePost = sendImageName[indexPath.row]
         
         performSegue(withIdentifier: "showImageView", sender: self)
-        performSegue(withIdentifier: "sendAddView", sender: self)
+//        performSegue(withIdentifier: "sendAddView", sender: self)
         
     }
     
+    
+    @IBAction func addView(_ sender: Any) {
+        
+        performSegue(withIdentifier: "sendAddView", sender: self)
+    
+    }
     
     //    詳細画面にデータを送る
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,6 +77,7 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     var sendImageName:[String] = []
     var collectionname:String = ""
     
+    var collectionCategoly = ""
     
     @IBOutlet weak var collectionview: UICollectionView!
     
@@ -100,7 +107,7 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
         
-        db.collection("users").document(user!.uid).collection("fasion").whereField("fasionName", isEqualTo: collectionname).getDocuments() { [self] (querySnapshot, err) in
+        db.collection("users").document(user!.uid).collection(collectionCategoly).whereField("fasionName", isEqualTo: collectionname).getDocuments() { [self] (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {

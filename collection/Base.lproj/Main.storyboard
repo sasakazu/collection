@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qX4-Ql-c8D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hQ1-z2-XEc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -119,9 +119,6 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="w5X-vU-SKg" secondAttribute="bottom" constant="19" id="z4Y-UT-lVV"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="BWZ-Tc-FvG" kind="show" id="hpm-aR-qhf"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="e5B-sq-iWu">
                                         <rect key="frame" x="0.0" y="204.5" width="414" height="80"/>
@@ -282,11 +279,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="collection" id="QOc-xs-mfs">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="C8Z-fI-uPI">
-                            <connections>
-                                <segue destination="E35-Mg-fHS" kind="showDetail" id="X4M-Fq-1oN"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="C8Z-fI-uPI"/>
                     </navigationItem>
                     <connections>
                         <outlet property="createImage" destination="rR4-A3-bea" id="aK1-eW-Bgf"/>
@@ -301,9 +294,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQB-kd-NO3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2515.9420289855075" y="83.705357142857139"/>
+            <point key="canvasLocation" x="554" y="830"/>
         </scene>
-        <!--ファッション-->
+        <!--Fasion Top-->
         <scene sceneID="rle-sO-MfT">
             <objects>
                 <viewController id="BWZ-Tc-FvG" customClass="fasionTop" customModule="collection" customModuleProvider="target" sceneMemberID="viewController">
@@ -334,10 +327,11 @@
                         <viewLayoutGuide key="safeArea" id="Ws3-4m-gzm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="ファッション" id="eec-CC-0Eo">
+                    <navigationItem key="navigationItem" id="eec-CC-0Eo">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="xHM-MH-frD">
                             <connections>
-                                <segue destination="jtR-Wb-snn" kind="show" id="eq4-XN-15X"/>
+                                <action selector="createCollection:" destination="BWZ-Tc-FvG" id="5M6-Rh-GuY"/>
+                                <segue destination="jtR-Wb-snn" kind="show" identifier="createView" id="eq4-XN-15X"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -348,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJx-9I-8wI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3297.1014492753625" y="83.705357142857139"/>
+            <point key="canvasLocation" x="4083" y="84"/>
         </scene>
         <!--Fasion Detail View-->
         <scene sceneID="Pei-Q2-szX">
@@ -409,7 +403,8 @@
                     <navigationItem key="navigationItem" id="xkI-Co-H4n">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bfh-Mc-WXP">
                             <connections>
-                                <segue destination="i9e-aK-iFa" kind="showDetail" identifier="sendAddView" id="ZuA-G8-eii"/>
+                                <action selector="addView:" destination="zoI-4N-eb1" id="i2P-aw-LtC"/>
+                                <segue destination="i9e-aK-iFa" kind="showDetail" id="c8R-iK-Y3A"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -420,7 +415,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F0j-OE-0Js" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4082.6086956521744" y="83.705357142857139"/>
+            <point key="canvasLocation" x="4883" y="84"/>
         </scene>
         <!--新規コレクション追加-->
         <scene sceneID="RiB-1T-tSV">
@@ -476,7 +471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ux-ey-0zu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4871" y="84"/>
+            <point key="canvasLocation" x="5671" y="84"/>
         </scene>
         <!--Fasion Save View-->
         <scene sceneID="dLV-VD-Tsi">
@@ -551,7 +546,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xSc-id-zF7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5722" y="84"/>
+            <point key="canvasLocation" x="6465" y="84"/>
         </scene>
         <!--Show Fasion Image View-->
         <scene sceneID="YGh-Bk-r8P">
@@ -746,23 +741,52 @@
             </objects>
             <point key="canvasLocation" x="554" y="84"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Uph-uA-U6g">
+        <!--collection-->
+        <scene sceneID="gz2-4w-1YX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qX4-Ql-c8D" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eXt-ah-9uN">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController id="AiC-eA-ZWE" customClass="topViewController" customModule="collection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dPC-4H-ogq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jJN-k0-JrT">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="rYX-ch-icQ">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rYX-ch-icQ" id="EfV-IA-KnG">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="AiC-eA-ZWE" id="NvV-0d-byZ"/>
+                                    <outlet property="delegate" destination="AiC-eA-ZWE" id="rxT-Ue-n0a"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6hp-ig-2qH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="collection" id="v7r-nH-Sy6">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="bFt-zQ-zfx">
+                            <connections>
+                                <segue destination="E35-Mg-fHS" kind="showDetail" id="XCz-8P-lvb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="rKf-vM-0gh" kind="relationship" relationship="rootViewController" id="R8K-yp-AAf"/>
+                        <outlet property="topTableView" destination="jJN-k0-JrT" id="tg4-tM-RDq"/>
+                        <segue destination="BWZ-Tc-FvG" kind="show" identifier="goMainView" id="7MR-m5-Tzl"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IgV-Ef-tfw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fdf-js-QVV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1721.7391304347827" y="83.705357142857139"/>
+            <point key="canvasLocation" x="3295.652173913044" y="83.705357142857139"/>
         </scene>
         <!--Setting Table View-->
         <scene sceneID="pGm-zQ-RPN">
@@ -969,6 +993,7 @@
                             <constraint firstItem="K51-t5-uAs" firstAttribute="top" secondItem="Agg-Op-HoQ" secondAttribute="top" id="igC-XO-KwO"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="JNc-VR-rca"/>
                     <connections>
                         <outlet property="addCollectionView" destination="G4G-T2-EB1" id="2t1-NZ-Y2c"/>
                     </connections>
@@ -977,10 +1002,29 @@
             </objects>
             <point key="canvasLocation" x="4082.6086956521744" y="-609.375"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="z5V-Iv-NUV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hQ1-z2-XEc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5e3-hf-PVc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AiC-eA-ZWE" kind="relationship" relationship="rootViewController" id="d6W-vH-fl5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="juj-Uy-mI6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2515.9420289855075" y="83.705357142857139"/>
+        </scene>
     </scenes>
     <resources>
         <image name="family" width="394" height="394"/>
         <image name="fasion" width="490" height="490"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="gundum" width="568" height="568"/>
         <image name="hobby" width="300" height="300"/>
         <image name="music" width="300" height="300"/>

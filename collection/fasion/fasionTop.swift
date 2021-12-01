@@ -13,6 +13,9 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var myID = ""
     var myName = ""
     
+//    firebase collection name
+    var collectionName = ""
+    
     var collectionItems:[String] = []
     var documentID:[String] = []
     
@@ -40,6 +43,7 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         myName = collectionItems[indexPath.row]
         performSegue(withIdentifier: "sendData", sender: self)
+//        performSegue(withIdentifier: "createView", sender: self)
     }
     
     
@@ -51,10 +55,19 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
               
                 nextVC.id = myID
                 nextVC.collectionname = myName
+                nextVC.collectionCategoly = collectionName
+            }
             
+        } else if segue.identifier == "createView" {
+            if let createVC = segue.destination as? fasionCreateView {
+              
+                createVC.collectionname = collectionName
+                
+            }
         }
+        
+        
     }
-}
     
     
     @IBOutlet weak var fasionTable: UITableView!
@@ -67,6 +80,9 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
         fasionTable.dataSource = self
         
 //
+        print(collectionName)
+        
+        
         let nib = UINib(nibName: "fasionTableViewCell", bundle: nil)
         
         fasionTable.register(nib, forCellReuseIdentifier: "Cell")
@@ -75,7 +91,7 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let user = Auth.auth().currentUser
         
         
-        db.collection("users").document(user!.uid).collection("fasion").getDocuments() { (querySnapshot, err) in
+        db.collection("users").document(user!.uid).collection(collectionName).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -94,6 +110,13 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         
         // Do any additional setup after loading the view.
+    }
+    
+    
+    
+    @IBAction func createCollection(_ sender: Any) {
+        
+        performSegue(withIdentifier: "createView", sender: self)
     }
     
 
