@@ -43,6 +43,15 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
     var selectedCount = 0
     var colle = ""
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+        openLibrary()
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,6 +67,21 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
     
     @IBAction func libraryBtn(_ sender: Any) {
     
+        openLibrary()
+        
+    }
+
+
+
+    func reloadImage() {
+         // photos.count と asset.count が等しければ tableView を再描画
+         if photos.count == selectedCount {
+             fasionCollectionView.reloadData()
+         }
+     }
+
+    func openLibrary() {
+        
         
         let imagePicker = DKImagePickerController()
         imagePicker.maxSelectableCount = 6
@@ -104,19 +128,8 @@ class fasionSaveView: UIViewController, UINavigationControllerDelegate, UICollec
 
            // ここでDKImagePickerを表示
         present(imagePicker, animated: true, completion: nil)
-      
-    }
-
-
-
-    func reloadImage() {
-         // photos.count と asset.count が等しければ tableView を再描画
-         if photos.count == selectedCount {
-             fasionCollectionView.reloadData()
-         }
-     }
-
     
+    }
     
 
 

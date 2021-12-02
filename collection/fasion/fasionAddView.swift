@@ -41,9 +41,18 @@ class fasionAddView: UIViewController, UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var addCollectionView: UICollectionView!
     
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+        openLibrary()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+      
 //        print(addname)
 //        print("imagename issssss   \(imageNames)")
 //        print("item isssssssss     \(imageItems)")
@@ -58,6 +67,19 @@ class fasionAddView: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     @IBAction func libralyBtn(_ sender: Any) {
+        
+        openLibrary()
+        
+    }
+    
+    func reloadImage() {
+         // photos.count と asset.count が等しければ tableView を再描画
+         if addPhotos.count == selectedCount {
+             addCollectionView.reloadData()
+         }
+     }
+    
+    func openLibrary() {
         
         let imagePicker = DKImagePickerController()
         imagePicker.maxSelectableCount = 6
@@ -98,15 +120,9 @@ class fasionAddView: UIViewController, UICollectionViewDelegate, UICollectionVie
 
         // ここでDKImagePickerを表示
         present(imagePicker, animated: true, completion: nil)
-        
+     
     }
     
-    func reloadImage() {
-         // photos.count と asset.count が等しければ tableView を再描画
-         if addPhotos.count == selectedCount {
-             addCollectionView.reloadData()
-         }
-     }
     
     @IBAction func saveBtn(_ sender: Any) {
         

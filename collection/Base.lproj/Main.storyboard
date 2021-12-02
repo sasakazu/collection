@@ -337,6 +337,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="fasionTable" destination="cxQ-mr-0l2" id="hdl-xZ-7o0"/>
+                        <outlet property="navtitle" destination="eec-CC-0Eo" id="C45-rZ-aUC"/>
                         <segue destination="zoI-4N-eb1" kind="show" identifier="sendData" id="DoH-xA-Qyg"/>
                     </connections>
                 </viewController>

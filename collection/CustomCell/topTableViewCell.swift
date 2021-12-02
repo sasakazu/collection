@@ -16,6 +16,10 @@ class topTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.topImageCell.layer.cornerRadius = self.topImageCell.frame.size.width * 0.5
+        self.topImageCell.clipsToBounds = true
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -41,6 +41,9 @@ class topViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         performSegue(withIdentifier: "goMainView", sender: self)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           return 50
+       }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

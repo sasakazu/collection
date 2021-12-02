@@ -72,6 +72,7 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var fasionTable: UITableView!
     
+    @IBOutlet weak var navtitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +82,7 @@ class fasionTop: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
 //
         print(collectionName)
+        navtitle.title = collectionName
         
         
         let nib = UINib(nibName: "fasionTableViewCell", bundle: nil)
