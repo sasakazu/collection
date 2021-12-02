@@ -85,6 +85,7 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     
     @IBOutlet weak var collectionview: UICollectionView!
     
+    @IBOutlet weak var navTitle: UINavigationItem!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -96,6 +97,8 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navTitle.title = collectionname
         
         collectionview.delegate = self
         collectionview.dataSource = self

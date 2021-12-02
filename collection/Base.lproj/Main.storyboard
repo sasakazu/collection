@@ -411,6 +411,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionview" destination="2dk-xK-q9U" id="3vP-IT-Hch"/>
+                        <outlet property="navTitle" destination="xkI-Co-H4n" id="aav-ac-ynI"/>
                         <segue destination="u9x-Gn-im6" kind="show" identifier="showImageView" id="xgO-p7-6XC"/>
                     </connections>
                 </viewController>

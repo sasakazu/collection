@@ -31,12 +31,18 @@ class showFasionImageView: UIViewController {
     
     @IBAction func trashBtn(_ sender: Any) {
     
+        
+        let refreshAlert = UIAlertController(title: "削除", message: "本当に削除してもよろしいですか？", preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "削除", style: .default, handler: { (action: UIAlertAction!) in
+              print("Handle Ok logic here")
+        
         let user = Auth.auth().currentUser
         let db = Firestore.firestore()
         
 //        storageの削除
        
-        let desertRef = Storage.storage().reference().child("posts").child(user!.uid).child(category).child(collename).child(imagenames)
+            let desertRef = Storage.storage().reference().child("posts").child(user!.uid).child(self.category).child(self.collename).child(self.imagenames)
         
         desertRef.delete { error in
           if let error = error {
@@ -48,7 +54,7 @@ class showFasionImageView: UIViewController {
             
         
         //特定のフィールドの削除
-        let washingtonRef = db.collection("users").document(user!.uid).collection(category).document(self.collename)
+            let washingtonRef = db.collection("users").document(user!.uid).collection(self.category).document(self.collename)
         
         washingtonRef.updateData([
             "images": FieldValue.arrayRemove([self.imagedata]),
@@ -67,6 +73,21 @@ class showFasionImageView: UIViewController {
             }
         }
         
+        }))
+
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+              print("Handle Cancel Logic here")
+        }))
+
+        present(refreshAlert, animated: true, completion: nil)
+        
+        
+
+        
+            
+            
     }
     
+                                             
+                                             
 }
