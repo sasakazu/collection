@@ -710,15 +710,6 @@
                                     <action selector="signupTapped:" destination="Dt4-uU-arR" eventType="touchUpInside" id="fmR-VV-QV0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1p-An-YwK">
-                                <rect key="frame" x="98" y="700" width="143" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="logout"/>
-                                <connections>
-                                    <action selector="logoutTapped:" destination="Dt4-uU-arR" eventType="touchUpInside" id="XIA-3D-rmA"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="l94-rz-yNl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

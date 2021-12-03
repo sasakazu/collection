@@ -68,6 +68,8 @@ class topViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         topTableView.delegate = self
         topTableView.dataSource = self
         
@@ -75,8 +77,23 @@ class topViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         topTableView.register(nib, forCellReuseIdentifier: "Cell")
 
+        
+        if Auth.auth().currentUser != nil {
+            
+            let user = Auth.auth().currentUser
+            
+            print(user?.email)
+            
+        } else {
+//            loginへ
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "login") as! login
+            self.present(secondViewController, animated: true, completion: nil)
+ 
+        }
+            
+    }
         // Do any additional setup after loading the view.
     }
     
 
-}
+
