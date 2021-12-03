@@ -389,6 +389,9 @@
                                     <barButtonItem width="305" style="plain" systemItem="fixedSpace" id="HdZ-wG-ui0"/>
                                     <barButtonItem systemItem="trash" id="Lhz-vB-jD8">
                                         <color key="tintColor" systemColor="systemRedColor"/>
+                                        <connections>
+                                            <action selector="trashBtn:" destination="zoI-4N-eb1" id="X2X-al-6Ee"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>

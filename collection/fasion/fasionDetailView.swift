@@ -142,5 +142,64 @@ class fasionDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         // Do any additional setup after loading the view.
     }
    
+    
+    
+    @IBAction func trashBtn(_ sender: Any) {
+        
+        
+        let refreshAlert = UIAlertController(title: "コレクション削除", message: "本当に削除してもよろしいですか？", preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "削除", style: .default, handler: { (action: UIAlertAction!) in
+              print("Handle Ok logic here")
+        
+        let user = Auth.auth().currentUser
+        let db = Firestore.firestore()
+        
+//        storageのフォルダ削除
+        let desertRef = Storage.storage().reference().child("posts").child(user!.uid).child(self.collectionCategoly).child(self.collectionname)
+        
+        desertRef.listAll(completion: { (StorageListResult, error) in
+            if let error = error {
+                print("エラー\(error)")
+            } else {
+                for ref in StorageListResult.items {
+                    ref.delete { (error) in
+                        if let error = error {
+                            print("エラー\(error)")
+                        } else {
+                            print("storage削除成功！")
+                        }
+                 }
+            }
+            }})
+        //ドキュメント削除
+        let washingtonRef = db.collection("users").document(user!.uid).collection(self.collectionCategoly).document(self.collectionname).delete()
+  
+        
+        { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+                
+            self.navigationController?.popViewController(animated: true)
+
+                
+            }
+        }
+        
+    }))
+                               
+
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+              print("Handle Cancel Logic here")
+        }))
+
+        present(refreshAlert, animated: true, completion: nil)
+        
+     
+        
+    }
+    
 
 }
